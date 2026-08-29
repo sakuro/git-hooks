@@ -1,0 +1,11 @@
+import "steps/emoji_enforced.pkl" as EmojiEnforced
+import "steps/merge_prefix.pkl" as MergePrefix
+import "steps/bundle_check.pkl" as BundleCheck
+import "steps/rspec.pkl" as Rspec
+import "steps/go_test.pkl" as GoTest
+
+emoji_enforced = EmojiEnforced.emoji_enforced
+merge_prefix = MergePrefix.merge_prefix
+bundle_check = BundleCheck.bundle_check
+rspec = Rspec.rspec
+go_test = GoTest.go_test
