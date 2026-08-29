@@ -8,7 +8,7 @@ rspec = new Config.Step {
         bundle exec rspec --format progress
       fi
       """#
-    effect = "read"
+    effect = "write"
   }
   tests {
     ["no-op when .rspec is absent"] {
