@@ -1,0 +1,13 @@
+amends "pkl:Project"
+
+package {
+  name = "git-hooks"
+  authors { "OZAWA Sakuro <10973+sakuro@users.noreply.github.com>" }
+  version = read?("env:VERSION") ?? "0.0.1-SNAPSHOT"
+  baseUri = "package://github.com/sakuro/git-hooks"
+  packageZipUrl = "https://github.com/sakuro/git-hooks/releases/download/v\(version)/\(name)@\(version).zip"
+  sourceCode = "https://github.com/sakuro/git-hooks"
+  sourceCodeUrlScheme = "https://github.com/sakuro/git-hooks/blob/\(version)%{path}#L%{line}-L%{endLine}"
+  license = "MIT"
+  description = "Pkl hk steps reproducing sakuro/dotfiles' retired git hooks"
+}
