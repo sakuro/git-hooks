@@ -1,0 +1,19 @@
+import "package://github.com/jdx/hk/releases/download/v1.56.1/hk@1.56.1#/Config.pkl"
+
+/// Prefixes merge commit messages with `:inbox_tray: `.
+///
+/// No-op unless `{{source}}` is `"merge"` (i.e. this prepare-commit-msg
+/// invocation was triggered by `git merge`).
+///
+/// No `tests {}` block: `{{commit_msg_file}}`/`{{source}}` aren't available in `hk test`'s sandbox, so this is verified via `hk run prepare-commit-msg` instead.
+merge_prefix = new Config.Step {
+  check = new Config.CommandSpec {
+    command = #"""
+      if [ "{{source}}" = "merge" ]; then
+        msg="$(cat "{{commit_msg_file}}")"
+        printf ':inbox_tray: %s\n' "$msg" > "{{commit_msg_file}}"
+      fi
+      """#
+    effect = "write"
+  }
+}
