@@ -20,7 +20,7 @@ jobs:
             echo "expected commit-msg hook to fail" >&2
             exit 1
           fi
-      - name: Smoke test commit-msg hook accepts a :emoji: message
+      - name: "Smoke test commit-msg hook accepts a :emoji: message"
         run: |
           echo ":sparkles: add feature" > /tmp/msg.txt
           hk run commit-msg /tmp/msg.txt
