@@ -9,5 +9,16 @@
       "matchUpdateTypes": ["major"],
       "automerge": false
     }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/\\.pkl$/", "/^README\\.md$/"],
+      "matchStrings": [
+        "package://github.com/jdx/hk/releases/download/v(?<currentValue>[^/]+)/hk@[^#\"]+"
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "jdx/hk"
+    }
   ]
 }
