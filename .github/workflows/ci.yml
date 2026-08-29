@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4
+      - name: Run hk test
+        run: hk test
+      - name: Smoke test commit-msg hook rejects a message without emoji
+        run: |
+          echo "no emoji here" > /tmp/msg.txt
+          if hk run commit-msg /tmp/msg.txt; then
+            echo "expected commit-msg hook to fail" >&2
+            exit 1
+          fi
+      - name: Smoke test commit-msg hook accepts a :emoji: message
+        run: |
+          echo ":sparkles: add feature" > /tmp/msg.txt
+          hk run commit-msg /tmp/msg.txt
+      - name: Smoke test prepare-commit-msg hook prefixes merge commits
+        run: |
+          echo "Merge branch 'foo'" > /tmp/msg.txt
+          hk run prepare-commit-msg /tmp/msg.txt merge deadbeef
+          grep -qF ":inbox_tray: Merge branch 'foo'" /tmp/msg.txt
