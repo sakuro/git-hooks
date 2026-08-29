@@ -1,0 +1,34 @@
+import "package://github.com/jdx/hk/releases/download/v1.56.1/hk@1.56.1#/Config.pkl"
+
+/// Enforces the GitHub `:emoji:` commit message convention.
+///
+/// Allows `fixup!`/`squash!` messages through untouched. Requires the
+/// first line to start with a `:emoji:` code. If `ruby` is on `PATH`,
+/// also rejects raw Unicode emoji anywhere in the message; otherwise
+/// warns and skips that part of the check.
+///
+/// No `tests {}` block: `{{commit_msg_file}}` isn't available in `hk test`'s sandbox, so this is verified via `hk run commit-msg` instead.
+emoji_enforced = new Config.Step {
+  check = new Config.CommandSpec {
+    command = #"""
+      msg="$(cat "{{commit_msg_file}}")"
+      case "$msg" in
+        fixup!*|squash!*) exit 0 ;;
+      esac
+      first_line="$(printf '%s\n' "$msg" | head -n 1)"
+      if ! printf '%s\n' "$first_line" | grep -qE '^:[A-Za-z0-9_+-]+: '; then
+        echo "Error: Commit message must start with a GitHub :emoji:" >&2
+        exit 1
+      fi
+      if command -v ruby >/dev/null 2>&1; then
+        if ruby -e 'exit(STDIN.read =~ /[\p{Emoji}&&[^[:ascii:]]]/ ? 0 : 1)' < "{{commit_msg_file}}" 2>/dev/null; then
+          echo "Error: Commit message contains raw emojis. Use :emoji: notation instead" >&2
+          exit 1
+        fi
+      else
+        echo "Warning: ruby not found, skipping raw emoji check" >&2
+      fi
+      """#
+    effect = "read"
+  }
+}

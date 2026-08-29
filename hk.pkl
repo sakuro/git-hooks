@@ -1,0 +1,28 @@
+amends "package://github.com/jdx/hk/releases/download/v1.56.1/hk@1.56.1#/Config.pkl"
+
+import "Steps.pkl"
+
+/// Configuration that dogfoods the 5 custom hook steps on this repo's own commits.
+/// Since hk is registered globally on this machine, any repo with an hk.pkl file gets
+/// these hooks active. `bundle-check`, `rspec`, and `go-test` are wired into `pre-push`
+/// primarily so `hk test` can discover and run their `tests {}` blocks; they safely no-op
+/// in this Pkl-only repo since there's no Gemfile, .rspec config, or go.mod here.
+hooks {
+  ["commit-msg"] {
+    steps {
+      ["emoji-enforced"] = Steps.emoji_enforced
+    }
+  }
+  ["prepare-commit-msg"] {
+    steps {
+      ["merge-prefix"] = Steps.merge_prefix
+    }
+  }
+  ["pre-push"] {
+    steps {
+      ["bundle-check"] = Steps.bundle_check
+      ["rspec"] = Steps.rspec
+      ["go-test"] = Steps.go_test
+    }
+  }
+}

@@ -1,0 +1,44 @@
+import "package://github.com/jdx/hk/releases/download/v1.56.1/hk@1.56.1#/Config.pkl"
+
+/// Fails if `Gemfile.lock` is older than `Gemfile` (i.e. `bundle install`
+/// has not been re-run since the last `Gemfile` change).
+bundle_check = new Config.Step {
+  check = new Config.CommandSpec {
+    command = #"""
+      if [ -f Gemfile ] && [ -f Gemfile.lock ] && [ Gemfile.lock -ot Gemfile ]; then
+        echo "Gemfile.lock is not up to date. Run bundle install" >&2
+        exit 1
+      fi
+      """#
+    effect = "read"
+  }
+  tests {
+    ["fails when lock is stale"] {
+      run = "check"
+      before = #"""
+        cd {{tmp}}
+        printf 'source "https://rubygems.org"\n' > Gemfile.lock
+        sleep 1
+        printf 'source "https://rubygems.org"\ngem "rake"\n' > Gemfile
+        """#
+      files = List("{{tmp}}/Gemfile")
+      expect { code = 1 }
+    }
+    ["passes when lock is fresh"] {
+      run = "check"
+      before = #"""
+        cd {{tmp}}
+        printf 'source "https://rubygems.org"\n' > Gemfile
+        sleep 1
+        printf 'source "https://rubygems.org"\n' > Gemfile.lock
+        """#
+      files = List("{{tmp}}/Gemfile")
+      expect { code = 0 }
+    }
+    ["passes when no Gemfile"] {
+      run = "check"
+      files = List()
+      expect { code = 0 }
+    }
+  }
+}
