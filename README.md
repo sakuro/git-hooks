@@ -1,7 +1,8 @@
 # git-hooks
 
-Pkl files defining global [hk](https://hk.jdx.dev/) hooks, imported by
-[sakuro/dotfiles](https://github.com/sakuro/dotfiles).
+Pkl files defining [hk](https://hk.jdx.dev/) hooks, imported by repos that
+scaffold from [sakuro/dotfiles](https://github.com/sakuro/dotfiles)-managed
+tooling (e.g. gem-scaffold, factorio-mod-scaffold).
 
 ## Steps
 

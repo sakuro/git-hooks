@@ -1,5 +1,5 @@
 [tools]
-hk = "latest"
+hk = "1.56.1"
 pkl = "latest"
 go = "latest"
 ruby = "latest"

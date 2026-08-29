@@ -10,4 +10,11 @@ package {
   sourceCodeUrlScheme = "https://github.com/sakuro/git-hooks/blob/\(version)%{path}#L%{line}-L%{endLine}"
   license = "MIT"
   description = "Pkl hk steps reproducing sakuro/dotfiles' retired git hooks"
+  // Exclude repo-internal files that consumers of the published package don't need.
+  exclude {
+    "AGENTS.md"
+    "CLAUDE.md"
+    "hk.pkl"
+    "mise.toml"
+  }
 }
