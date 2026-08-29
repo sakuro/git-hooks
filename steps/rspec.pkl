@@ -1,0 +1,20 @@
+import "package://github.com/jdx/hk/releases/download/v1.56.1/hk@1.56.1#/Config.pkl"
+
+/// Runs `bundle exec rspec` when `.rspec` is present; no-op otherwise.
+rspec = new Config.Step {
+  check = new Config.CommandSpec {
+    command = #"""
+      if [ -f .rspec ]; then
+        bundle exec rspec --format progress
+      fi
+      """#
+    effect = "read"
+  }
+  tests {
+    ["no-op when .rspec is absent"] {
+      run = "check"
+      files = List()
+      expect { code = 0 }
+    }
+  }
+}
