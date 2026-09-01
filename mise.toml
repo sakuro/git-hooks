@@ -1,8 +1,8 @@
 [tools]
-hk = "1.56.1"
-pkl = "0.32.1"
-go = "1.27.0"
-ruby = "4.0.6"
+hk = "1.56"
+pkl = "0.32"
+go = "1.27"
+ruby = "4.0"
 
 [settings]
 minimum_release_age = "3d"
