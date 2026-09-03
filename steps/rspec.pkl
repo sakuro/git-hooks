@@ -1,4 +1,4 @@
-import "package://github.com/jdx/hk/releases/download/v1.56.1/hk@1.56.1#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v1.57.0/hk@1.57.0#/Config.pkl"
 
 /// Runs `bundle exec rspec` when `.rspec` is present; no-op otherwise.
 rspec = new Config.Step {
