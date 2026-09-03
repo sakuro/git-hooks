@@ -19,8 +19,8 @@ For checks `hk` already ships as builtins — `gitleaks`, `check_case_conflict`,
 `Builtins.*` from `hk` directly instead of this package.
 
 ```pkl
-amends "package://github.com/jdx/hk/releases/download/v1.56.1/hk@1.56.1#/Config.pkl"
-import "package://github.com/jdx/hk/releases/download/v1.56.1/hk@1.56.1#/Builtins.pkl"
+amends "package://github.com/jdx/hk/releases/download/v1.57.0/hk@1.57.0#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v1.57.0/hk@1.57.0#/Builtins.pkl"
 import "package://github.com/sakuro/git-hooks/releases/download/v0.1.0/git-hooks@0.1.0#/Steps.pkl" as GitHooks
 
 hooks {
