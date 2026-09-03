@@ -8,6 +8,10 @@
     {
       "matchUpdateTypes": ["major"],
       "automerge": false
+    },
+    {
+      "matchDepNames": ["hk", "jdx/hk"],
+      "groupName": "hk"
     }
   ],
   "customManagers": [
