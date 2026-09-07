@@ -2,8 +2,9 @@ import "package://github.com/jdx/hk/releases/download/v1.57.0/hk@1.57.0#/Config.
 
 /// Enforces the GitHub `:emoji:` commit message convention.
 ///
-/// Allows `fixup!`/`squash!` messages through untouched. Requires the
-/// first line to start with a `:emoji:` code. If `ruby` is on `PATH`,
+/// Allows `fixup!`/`squash!` and `git revert` messages through
+/// untouched. Requires the first line to start with a `:emoji:` code.
+/// If `ruby` is on `PATH`,
 /// also rejects raw Unicode emoji anywhere in the message; otherwise
 /// warns and skips that part of the check.
 ///
@@ -13,7 +14,7 @@ emoji_enforced = new Config.Step {
     command = #"""
       msg="$(cat "{{commit_msg_file}}")"
       case "$msg" in
-        fixup!*|squash!*) exit 0 ;;
+        fixup!*|squash!*|'Revert "'*) exit 0 ;;
       esac
       first_line="$(printf '%s\n' "$msg" | head -n 1)"
       if ! printf '%s\n' "$first_line" | grep -qE '^:[A-Za-z0-9_+-]+: '; then
