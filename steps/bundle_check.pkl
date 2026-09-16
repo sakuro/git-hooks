@@ -1,4 +1,4 @@
-import "package://github.com/jdx/hk/releases/download/v1.58.1/hk@1.58.1#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v2.0.0/hk@2.0.0#/Config.pkl"
 
 /// Fails if `Gemfile.lock` is older than `Gemfile` (i.e. `bundle install`
 /// has not been re-run since the last `Gemfile` change).
