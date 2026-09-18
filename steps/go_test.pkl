@@ -1,4 +1,4 @@
-import "package://github.com/jdx/hk/releases/download/v2.0.0/hk@2.0.0#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v2.0.1/hk@2.0.1#/Config.pkl"
 
 /// Runs `go test ./...` in each Go workspace (a directory containing
 /// `go.mod`).
