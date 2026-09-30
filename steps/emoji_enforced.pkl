@@ -1,4 +1,4 @@
-import "package://github.com/jdx/hk/releases/download/v2.2.0/hk@2.2.0#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v2.3.0/hk@2.3.0#/Config.pkl"
 
 /// Enforces the GitHub `:emoji:` commit message convention.
 ///
