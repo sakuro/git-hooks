@@ -1,4 +1,4 @@
-import "package://github.com/jdx/hk/releases/download/v2.8.1/hk@2.8.1#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v2.9.0/hk@2.9.0#/Config.pkl"
 
 /// Prefixes merge commit messages with `:inbox_tray: `.
 ///
