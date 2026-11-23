@@ -16,7 +16,7 @@ Pkl files defining [hk](https://hk.jdx.dev/) hooks, reproducing
 ```pkl
 amends "package://github.com/jdx/hk/releases/download/v2.13.0/hk@2.13.0#/Config.pkl"
 import "package://github.com/jdx/hk/releases/download/v2.13.0/hk@2.13.0#/Builtins.pkl"
-import "package://github.com/sakuro/git-hooks/releases/download/v0.1.0/git-hooks@0.1.0#/Steps.pkl" as GitHooks
+import "package://github.com/sakuro/git-hooks/releases/download/vX.Y.Z/git-hooks@X.Y.Z#/Steps.pkl" as GitHooks
 
 hooks {
   ["commit-msg"] { steps { ["emoji-enforced"] = GitHooks.emoji_enforced } }
