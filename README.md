@@ -2,7 +2,6 @@
 
 Pkl files defining [hk](https://hk.jdx.dev/) hooks, reproducing
 [sakuro/dotfiles](https://github.com/sakuro/dotfiles)' retired git hooks.
-Imported by repos such as gem-scaffold and factorio-mod-scaffold.
 
 ## Steps
 
@@ -13,10 +12,6 @@ Imported by repos such as gem-scaffold and factorio-mod-scaffold.
 | `bundle_check`    | `pre-push`          | Ruby     | Fails if `Gemfile.lock` predates `Gemfile`                           |
 | `rspec`           | `pre-push`          | Ruby     | Runs `bundle exec rspec` when `.rspec` exists                        |
 | `go_test`         | `pre-push`          | Go       | Runs `go test ./...` per `go.mod` workspace                          |
-
-For checks `hk` already ships as builtins — `gitleaks`, `check_case_conflict`,
-`newlines`, `rubocop`, `gomod_tidy`, `go_fmt`, `go_vet`, `golangci_lint` — use
-`Builtins.*` from `hk` directly instead of this package.
 
 ```pkl
 amends "package://github.com/jdx/hk/releases/download/v2.13.0/hk@2.13.0#/Config.pkl"
