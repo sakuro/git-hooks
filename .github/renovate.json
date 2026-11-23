@@ -23,6 +23,13 @@
       ],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "jdx/hk"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/^\\.github/workflows/[^/]+\\.ya?ml$/"],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\n\\s*GH_ACTIONS_LOCK_VERSION: (?<currentValue>\\S+)"
+      ]
     }
   ]
 }

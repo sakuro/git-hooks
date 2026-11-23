@@ -6,6 +6,23 @@ on:
   pull_request:
 
 jobs:
+  verify-lockfile:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Verify actions.lock
+        env:
+          GH_TOKEN: ${{ github.token }}
+          # renovate: datasource=github-releases depName=github/gh-actions-lock
+          GH_ACTIONS_LOCK_VERSION: v0.5.1
+        # Not --fail-on-warning: workflows pin actions by full SHA with a `# vN`
+        # comment, which the tool reports as a "sha-as-ref" warning.
+        run: |
+          gh extension install github/gh-actions-lock --pin "$GH_ACTIONS_LOCK_VERSION" --force
+          gh actions-lock --verify
+
   test:
     runs-on: ubuntu-latest
     steps:
