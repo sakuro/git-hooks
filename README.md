@@ -14,8 +14,8 @@ Pkl files defining [hk](https://hk.jdx.dev/) hooks, reproducing
 | `go_test`         | `pre-push`          | Go       | Runs `go test ./...` per `go.mod` workspace                          |
 
 ```pkl
-amends "package://github.com/jdx/hk/releases/download/v2.13.0/hk@2.13.0#/Config.pkl"
-import "package://github.com/jdx/hk/releases/download/v2.13.0/hk@2.13.0#/Builtins.pkl"
+amends "package://github.com/jdx/hk/releases/download/v2.14.0/hk@2.14.0#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v2.14.0/hk@2.14.0#/Builtins.pkl"
 import "package://github.com/sakuro/git-hooks/releases/download/vX.Y.Z/git-hooks@X.Y.Z#/Steps.pkl" as GitHooks
 
 hooks {
