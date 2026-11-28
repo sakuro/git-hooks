@@ -13,7 +13,6 @@ package {
   // Exclude repo-internal files that consumers of the published package don't need.
   exclude {
     "AGENTS.md"
-    "CLAUDE.md"
     "hk.pkl"
     "mise.toml"
   }
